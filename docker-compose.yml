@@ -1,19 +1,20 @@
-
-volumes:
-  esdata:
-    driver: local
-
 services:
-  backend:
-    build: src/CleanApp.Api/Dockerfile
+  cleanapp.api.backend:
+    container_name: cleanapp-backend-api
+    image: cleanapp-backend-api
+    build:
+      context: .
+      dockerfile: src/CleanApp.Api/Dockerfile
     environment:
-      - ASPNETCORE_URLS=http://+:8080;http://+:8081
-    ports:
-      - "8080:8080"
-      - "8081:8081"
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.3
-    container_name: elasticsearch
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - backend
+    depends_on:
+      - cleanapp.elk.es
+
+  cleanapp.elk.es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
+    container_name: cleanapp-elk-es
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
@@ -29,31 +30,46 @@ services:
       - "9200:9200"
       - "9300:9300"
     networks:
-      - elk
+      - backend
 
-  logstash:
-    image: docker.elastic.co/logstash/logstash:8.15.3
-    container_name: logstash
+  cleanapp.elk.logstash:
+    image: docker.elastic.co/logstash/logstash:7.14.0
+    container_name: cleanapp-elk-logstash
     volumes:
-      - ./logstash/pipeline:/usr/share/logstash/pipeline
+      - .docker/logstash/pipeline:/usr/share/logstash/pipeline
     ports:
-      - "5000:5000"
+      - "5043:5043"
       - "9600:9600"
     networks:
-      - elk
+      - backend
     depends_on:
-      - elasticsearch
+      - cleanapp.elk.es
 
-  kibana:
-    image: docker.elastic.co/kibana/kibana:8.15.3
-    container_name: kibana
+  cleanapp.elk.kibana:
+    image: docker.elastic.co/kibana/kibana:7.14.0
+    container_name: cleanapp-elk-kibana
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
     ports:
       - "5601:5601"
+    networks:
+      - backend
     depends_on:
-      - elasticsearch
+      - cleanapp.elk.es
+
+  cleanapp.proxy:
+    container_name: cleanapp-proxy
+    image: cleanapp-proxy
+    build: docker/proxy
+    networks:
+      - backend
+    ports:
+      - 443:443
 
 networks:
-  elk:
+  backend:
     driver: bridge
+
+volumes:
+  esdata:
+    driver: local
