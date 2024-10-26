@@ -11,17 +11,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanApp.Domain", "src\Clea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanApp.Api", "src\CleanApp.Api\CleanApp.Api.csproj", "{B1143F2D-DD70-41E8-A434-4DB03D2FC46D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanApp.Api.UnitTests", "src\CleanApp.Api.UnitTests\CleanApp.Api.UnitTests.csproj", "{48752F2E-3D8C-49B1-8A6C-172BB54C11F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanApp.Api.UnitTests", "tests\CleanApp.Api.UnitTests\CleanApp.Api.UnitTests.csproj", "{48752F2E-3D8C-49B1-8A6C-172BB54C11F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanApp.Application.UnitTests", "src\CleanApp.Application.UnitTests\CleanApp.Application.UnitTests.csproj", "{40AFA71A-82C9-4F2D-BEF7-38C0DA0C4646}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanApp.Application.UnitTests", "tests\CleanApp.Application.UnitTests\CleanApp.Application.UnitTests.csproj", "{40AFA71A-82C9-4F2D-BEF7-38C0DA0C4646}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B1144AD4-9208-45C7-98F6-11EEAE7B06EA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{476F52F8-E7E5-4B36-9C29-FC8F64313982}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanApp.Infrastructure.UnitTests", "src\CleanApp.Infrastructure.UnitTests\CleanApp.Infrastructure.UnitTests.csproj", "{62995D58-F326-4943-AB04-38B6B899ED30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanApp.Infrastructure.UnitTests", "tests\CleanApp.Infrastructure.UnitTests\CleanApp.Infrastructure.UnitTests.csproj", "{62995D58-F326-4943-AB04-38B6B899ED30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanApp.Api.IntegrationTests", "src\CleanApp.Api.IntegrationTests\CleanApp.Api.IntegrationTests.csproj", "{82053688-02DD-4FFE-A044-1E947A9B2F55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanApp.Api.IntegrationTests", "tests\CleanApp.Api.IntegrationTests\CleanApp.Api.IntegrationTests.csproj", "{82053688-02DD-4FFE-A044-1E947A9B2F55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
